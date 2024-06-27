@@ -106,11 +106,19 @@ namespace Formulario
         /// <param name="e">Los datos del evento.</param>
         private void btnSql_Click(object sender, EventArgs e)
         {
-            Sql sql = new Sql();
             try
             {
+                Sql sql = new Sql();
                 patentes = sql.Leer();
-                IniciarSimulacion();
+                if (patentes != null)
+                {
+                    patentes.AddRange(patentes);
+                    IniciarSimulacion();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron leer las patentes desde el archivo SQL");
+                }
             }
             catch (Exception ex)
             {
@@ -125,11 +133,19 @@ namespace Formulario
         /// <param name="e">Los datos del evento.</param>
         private void btnXml_Click(object sender, EventArgs e)
         {
-            Xml xml = new Xml();
             try
             {
+                Xml xml = new Xml();
                 patentes = xml.Leer();
-                IniciarSimulacion();
+                if (patentes != null)
+                {
+                    patentes.AddRange(patentes);
+                    IniciarSimulacion();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron leer las patentes desde el archivo XML");
+                }
             }
             catch (Exception ex)
             {
@@ -144,11 +160,19 @@ namespace Formulario
         /// <param name="e">Los datos del evento.</param>
         private void btnTxt_Click(object sender, EventArgs e)
         {
-            Texto txt = new Texto();
             try
             {
+                Texto txt = new Texto();
                 patentes = txt.Leer();
-                IniciarSimulacion();
+                if (patentes != null)
+                {
+                    patentes.AddRange(patentes);
+                    IniciarSimulacion();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron leer las patentes desde el archivo TXT");
+                }
             }
             catch (Exception ex)
             {
@@ -162,7 +186,9 @@ namespace Formulario
         private void IniciarSimulacion()
         {
             FinalizarSimulacion();
+            
             ProximaPatente(vistaPatente);
+            
         }
 
         /// <summary>

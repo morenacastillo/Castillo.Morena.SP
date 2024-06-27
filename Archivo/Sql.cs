@@ -35,7 +35,7 @@ namespace Archivo
                 _conexion.Open();
                 foreach (var patente in datos)
                 {
-                    _comando.CommandText = $"INSERT INTO patentes (CodigoPatente, TipoCodigo) VALUES ('{patente.CodigoPatente}', '{patente.TipoCodigo}')";
+                    _comando.CommandText = $"INSERT INTO patentes (patente, tipo) VALUES ('{patente.CodigoPatente}', '{patente.TipoCodigo}')";
                     _comando.ExecuteNonQuery();
                 }
                 return true;
@@ -60,12 +60,12 @@ namespace Archivo
             try
             {
                 _conexion.Open();
-                _comando.CommandText = "SELECT CodigoPatente, TipoCodigo FROM patentes";
+                _comando.CommandText = "SELECT patente, tipo FROM patentes";
                 using (SqlDataReader reader = _comando.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        patentes.Add(new Patente(reader["CodigoPatente"].ToString(), (Tipo)Enum.Parse(typeof(Tipo), reader["TipoCodigo"].ToString())));
+                        patentes.Add(new Patente(reader["patente"].ToString(), (Tipo)Enum.Parse(typeof(Tipo), reader["tipo"].ToString())));
                     }
                 }
             }
