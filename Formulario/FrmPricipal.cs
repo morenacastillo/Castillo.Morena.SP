@@ -112,7 +112,6 @@ namespace Formulario
                 patentes = sql.Leer();
                 if (patentes != null)
                 {
-                    patentes.AddRange(patentes);
                     IniciarSimulacion();
                 }
                 else
@@ -139,7 +138,6 @@ namespace Formulario
                 patentes = xml.Leer();
                 if (patentes != null)
                 {
-                    patentes.AddRange(patentes);
                     IniciarSimulacion();
                 }
                 else
@@ -166,7 +164,6 @@ namespace Formulario
                 patentes = txt.Leer();
                 if (patentes != null)
                 {
-                    patentes.AddRange(patentes);
                     IniciarSimulacion();
                 }
                 else
